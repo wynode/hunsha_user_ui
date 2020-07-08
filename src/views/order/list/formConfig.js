@@ -98,10 +98,10 @@ export const showFields = () => {
       title: '收货方式',
       name: 'receiveGoodsType',
     },
-    {
-      title: '备注',
-      name: 'note',
-    },
+    // {
+    //   title: '备注',
+    //   name: 'note',
+    // },
   ]
 }
 

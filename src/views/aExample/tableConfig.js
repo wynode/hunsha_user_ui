@@ -27,10 +27,10 @@ export function tableListCols(vm) {
       label: '店铺地址',
       prop: 'address',
     },
-    {
-      label: '备注',
-      prop: 'note',
-    },
+    // {
+    //   label: '备注',
+    //   prop: 'note',
+    // },
     {
       label: '操作',
       width: 150,

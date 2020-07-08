@@ -1,7 +1,7 @@
 <template>
   <div class="mo_div">
     <div v-if="showOrderList" class="mo_main">
-      <div style="background: #fff">
+      <div>
         <h1>尊敬的 {{ customerName }}:</h1>
 
         <h2>近30日订单列表</h2>
@@ -12,6 +12,7 @@
           v-for="item in tableList"
           :key="item.customerName"
           @click="showForm(item)"
+          class="Mt15"
         >
           <div slot="header" @click="showForm(item)">
             <span>订单号：{{ item.orderNumber }}</span>
@@ -35,26 +36,54 @@
                 <span>{{ item.customerNote }}</span>
               </li>
               <li>
+                收货方式：
+                <span>{{ item.receiveGoodsType }}</span>
+              </li>
+              <li>
                 收货地址：
                 <span>{{ item.customerNote }}</span>
+              </li>
+              <li>
+                订单录入时间：
+
+                <span>{{ dateFormat(item.addTime * 1000) }}</span>
               </li>
               <li>
                 预期收货时间：
                 <span>{{ dateFormat(item.receiveGoodsTime * 1000) }}</span>
               </li>
-              <li>
-                收货方式：
-                <span>{{ item.receiveGoodsType }}</span>
-              </li>
-              <li>
-                备注：
-                <span>{{ item.note }}</span>
-              </li>
+              <div style="display: flex">
+                <li style="min-width: 100px">
+                  订单价格统计：
+                </li>
+                <div>
+                  <li style="min-width: 150px">
+                    租赁：
+                    <span>{{ item.rentTotalPrice / 100 || 0 }}元</span>
+                  </li>
+                  <li style="min-width: 150px">
+                    出售：
+                    <span>{{ item.saleTotalPrice / 100 || 0 }}元</span>
+                  </li>
+                  <li style="min-width: 150px">
+                    定制：
+
+                    <span>{{ item.customizeTotalPrice / 100 || 0 }}元</span>
+                  </li>
+                  <li style="min-width: 150px">
+                    合计：
+                    <span>{{ item.totalPrice / 100 }}元</span>
+                  </li>
+                </div>
+              </div>
             </ul>
           </div>
         </el-card>
       </div>
     </div>
+    <!-- <div v-else-if="showTableList">
+      <component :is="table"></component>
+    </div> -->
     <div class="login" :class="{ mo_login: isMobile }" v-else>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -101,6 +130,7 @@
 // import { USER_INFO } from '@/config'
 import { getVerify, getOrderList } from '@/apis'
 import { dateFormat } from '@/utils/dateFormat'
+import orderTable from '@/views/order/list/TableList'
 import { LoginFields } from './formConfig'
 import ShowForm from './ShowForm'
 /* eslint-disable */
@@ -116,9 +146,14 @@ export default {
       errorMsg: '',
       customerName: '',
       showOrderList: false,
+      showTableList: false,
       orderNumber: '',
       tableList: [],
+      table: 'orderTable',
     }
+  },
+  components: {
+    orderTable,
   },
 
   computed: {
@@ -168,6 +203,7 @@ export default {
             if (this.isMobile) {
               this.showOrderList = true
             } else {
+              // this.showTableList = true
               this.$router.push({
                 name: 'orderList',
                 query: {

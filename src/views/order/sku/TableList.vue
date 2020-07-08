@@ -1,6 +1,6 @@
 <template>
-  <div class="order_sku_profile" v-if="tableList.length">
-    <el-card v-for="sku in tableList" :key="sku.orderSkuId">
+  <div class="order_sku_profile">
+    <el-card v-for="sku in skuList" :key="sku.orderSkuId">
       <div class="table_sku">
         <div class="ts_item">
           <span>订单服装编号：{{ sku.orderNumber }}</span>
@@ -103,13 +103,13 @@
           <span>物流单号：{{ sku.expressValue }}</span>
         </div>
         <div class="ts_item">
-          <span>单价：{{ sku.price }}元</span>
+          <span>单价：{{ sku.price / 100 }}元</span>
           <span>数量：{{ sku.skuNum }}件</span>
-          <span>合计：{{ sku.totalPrice }}元</span>
+          <span>合计：{{ sku.totalPrice / 100 }}元</span>
         </div>
-        <div class="ts_item">
+        <!-- <div class="ts_item">
           <span>备注：{{ sku.note }}</span>
-        </div>
+        </div> -->
         <div class="ts_item">
           <span>
             异常备注：
@@ -119,26 +119,27 @@
       </div>
     </el-card>
   </div>
-  <div v-else class="no_more_text">暂无订单Sku</div>
 </template>
 
 <script>
 import { IMG_URL } from '@/config'
 import { getStatus } from '@/utils/common'
 import { dateFormat } from '@/utils/dateFormat'
-import { tableListCols } from './tableConfig'
 export default {
   name: 'adminOrderListSku',
+
+  props: {
+    skuList: {
+      type: Array,
+      default: () => [],
+    },
+  },
 
   data() {
     return {}
   },
 
   computed: {
-    tableListCols() {
-      return tableListCols(this)
-    },
-
     imgUrl() {
       return IMG_URL
     },
@@ -191,11 +192,11 @@ export default {
       margin-right: 40px;
       margin-left: 15px;
       display: inline-block;
-      min-width: 160px;
     }
     div:first-child {
       span {
         font-weight: bold;
+        white-space: nowrap;
       }
     }
     div:nth-child(2n) {

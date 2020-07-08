@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showList">
+  <div>
     <el-card>
       <Txcel
         element-loading-text="数据加载中"
@@ -10,11 +10,11 @@
       />
     </el-card>
   </div>
-  <div v-else>
+  <!-- <div v-else>
     <el-card class="profile_second_card">
-      <component :is="activeTab" :tableList="tableList"></component>
+      <component :is="activeTab" :skuList="tableListRow"></component>
     </el-card>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -23,6 +23,7 @@ import { getOrderList } from '@/apis'
 import { tableListCols } from './tableConfig'
 import { filterFields, showFields } from './formConfig'
 import { dateFormat } from '@/utils/dateFormat'
+import sku from '@/views/order/sku/TableList'
 // import { fetchAdminShopOrder } from '@/apis'
 import { get } from 'lodash'
 
@@ -35,9 +36,9 @@ export default {
 
   // mixins: [table],
 
-  components: {
-    sku: () => import('@/views/order/sku/TableList'),
-  },
+  // components: {
+  //   sku: () => import('@/views/order/sku/TableList'),
+  // },
 
   data() {
     return {
@@ -47,6 +48,7 @@ export default {
       activeTab: 'sku',
       orderData: {},
       showList: true,
+      tableListRow: {},
     }
   },
 
@@ -66,6 +68,21 @@ export default {
 
     filterFields() {
       return filterFields(this)
+    },
+  },
+
+  methods: {
+    showItem(row) {
+      this.tableListRow = row.orderSkuList
+      this.showList = false
+
+      this.$createDialog(
+        {
+          footer: false,
+          fullscreen: true,
+        },
+        () => <sku skuList={this.tableListRow} />
+      ).show()
     },
   },
 
@@ -94,17 +111,16 @@ export default {
 
   mounted() {
     const { code, name, phone } = this.$route.query
+
     if (code) {
       getOrderList({
         verifyCode: code,
         customerName: name,
         customerPhone: phone,
       }).then((data) => {
-        this.showList = false
+        // this.showList = false
         this.tableList = data.result
       })
-    } else {
-      this.$router.push({ name: 'login ' })
     }
   },
 }

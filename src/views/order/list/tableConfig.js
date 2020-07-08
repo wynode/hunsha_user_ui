@@ -118,10 +118,16 @@ export function tableListCols(vm) {
       component: OneLineText,
     },
     {
-      label: '备注',
-      prop: 'note',
-      component: OneLineText,
+      label: '入单时间',
+      width: 160,
+      prop: 'addTime',
+      component: FormatTime,
     },
+    // {
+    //   label: '备注',
+    //   prop: 'note',
+    //   component: OneLineText,
+    // },
     // {
     //   label: '操作',
     //   width: 150,
