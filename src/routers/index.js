@@ -15,7 +15,7 @@ const router = new Router({
     ...login,
     {
       path: '/',
-      redirect: '/order-list',
+      redirect: '/login',
       component: BasicWrapper,
       children: [...all],
     },

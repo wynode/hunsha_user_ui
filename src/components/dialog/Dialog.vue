@@ -1,11 +1,14 @@
 <template>
   <el-dialog
+    ref="createDialog"
     :visible.sync="visible"
     :width="width"
     :close-on-click-modal="closeOnClickModal"
     :close-on-press-escape="true"
+    :top="top"
     @open="handleOpen"
     @close="handleClose"
+    :fullscreen="fullscreen"
   >
     <slot></slot>
     <div slot="title">
@@ -65,6 +68,16 @@ export default {
     showCancelBtn: {
       type: Boolean,
       default: true,
+    }, // 是否显示取消按钮
+
+    fullscreen: {
+      type: Boolean,
+      default: false,
+    }, // 是否全屏显示
+
+    top: {
+      type: String,
+      default: '15vh',
     }, // 是否显示取消按钮
 
     closeOnClickModal: {

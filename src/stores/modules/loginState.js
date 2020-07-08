@@ -21,7 +21,7 @@ const getters = {
 
   username() {
     const userInfo = store.get(USER_INFO)
-    return userInfo ? userInfo.name : '用户资料错误'
+    return userInfo ? userInfo : '用户资料错误'
   },
 }
 

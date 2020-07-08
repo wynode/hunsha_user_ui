@@ -16,8 +16,8 @@ const imgURL = new Map([
 export const SERVER_API = serverURL.get(buildEnv)
 export const IMG_URL = imgURL.get(buildEnv)
 
-export const AUTH_TOKEN = 'user_session'
-export const USER_INFO = 'adminUser'
+export const AUTH_TOKEN = 'client_session'
+export const USER_INFO = 'clientUser'
 
 // upload
 export const UPLOAD_URL = `http://hunsha.php20.cn/Api/Admin/common/upload`

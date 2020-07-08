@@ -6,15 +6,15 @@ import { Notification } from 'element-ui'
 function requestFactory(httpClient) {
   httpClient.interceptors.request.use(
     (opts) => {
-      const token = store.get(AUTH_TOKEN)
-      if (token) {
-        /* eslint-disable no-param-reassign */
-        if (opts.params) {
-          opts.params[AUTH_TOKEN] = token
-        } else {
-          opts.data[AUTH_TOKEN] = token
-        }
-      }
+      // const token = store.get(AUTH_TOKEN)
+      // if (token) {
+      //   /* eslint-disable no-param-reassign */
+      //   if (opts.params) {
+      //     opts.params[AUTH_TOKEN] = token
+      //   } else {
+      //     opts.data[AUTH_TOKEN] = token
+      //   }
+      // }
       if (opts.data) {
         const formData = new FormData()
         Object.keys(opts.data).forEach((key) => {

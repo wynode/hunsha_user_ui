@@ -7,19 +7,18 @@ export const LoginFields = () => {
     //   rules: [{ required: true, message: '请填写用户名', trigger: 'blur' }],
     // },
     {
-      title: '用户账号',
-      name: 'account',
+      title: '客户名称',
+      name: 'customerName',
       widget: 'text',
-      rules: [{ required: true, message: '请填写用户账号', trigger: 'blur' }],
+      rules: [{ required: true, message: '请填写客户名称', trigger: 'blur' }],
     },
     {
-      title: '密码',
-      name: 'password',
+      title: '手机号码',
+      name: 'customerPhone',
       widget: 'text',
-      rules: [{ required: true, message: '请填写用户密码', trigger: 'blur' }],
-      xProps: {
-        'show-password': true,
-      },
+      rules: [
+        { required: true, message: '请填写用户手机号码', trigger: 'blur' },
+      ],
     },
     // {
     //   title: '验证码',
