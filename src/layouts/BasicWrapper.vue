@@ -1,7 +1,7 @@
 <template>
   <el-container class="Hst">
     <el-header class="Df Aic bgh Header">
-      <p :class="{ top_title_flex: !menuCollapse }" class="top_title">
+      <!-- <p :class="{ top_title_flex: !menuCollapse }" class="top_title">
         <a href="/" class="Lhcr Curp">
           <img
             src="./logo.png"
@@ -10,11 +10,11 @@
           />
         </a>
         客户订单查看
-      </p>
+      </p> -->
 
       <el-dropdown class="Mla" trigger="click">
         <div v-if="userName" class="Curp">
-          <span>{{ userName }}</span>
+          <span>尊敬的{{ userName }}</span>
           <i class="el-icon-arrow-down el-icon--right"></i>
         </div>
         <div v-else class="Curp">
@@ -33,7 +33,7 @@
     </el-header>
 
     <el-container class="Ovh" style="margin-top: -1px">
-      <el-aside :width="menuCollapse ? '65px' : '216px'" class="Posr Pb56">
+      <!-- <el-aside :width="menuCollapse ? '65px' : '216px'" class="Posr Pb56">
         <div class="menu_container">
           <div class="menu_scroll">
             <el-menu
@@ -63,7 +63,7 @@
             @click="menuCollapse = !menuCollapse"
           ></i>
         </div>
-      </el-aside>
+      </el-aside> -->
 
       <el-main class="bg" id="main_anchor" style="margin-top: 1px">
         <!-- <HeaderBoard
@@ -81,7 +81,7 @@
 
 <script>
 // import { mapGetters } from 'vuex'
-import AsideMenu from '@/components/AsideMenu.vue'
+// import AsideMenu from '@/components/AsideMenu.vue'
 // import HeaderBoard from '@/components/HeaderBoard.vue'
 import menusConfig from './menusConfig'
 // import store from 'store2'
@@ -91,7 +91,7 @@ export default {
   name: 'BasicWrapper',
 
   components: {
-    AsideMenu,
+    // AsideMenu,
     // HeaderBoard,
   },
 

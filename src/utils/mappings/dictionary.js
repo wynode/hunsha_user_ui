@@ -118,3 +118,9 @@ export const ordering = new Map([
 ])
 
 export const memory = new Map([])
+
+export const dealType = new Map([
+  [1, '出售'],
+  [2, '租赁'],
+  [3, '定制'],
+])

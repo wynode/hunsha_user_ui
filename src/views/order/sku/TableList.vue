@@ -7,21 +7,8 @@
         </div>
         <div class="order_sku_tupian ts_item">
           <!-- <img :src="imgUrl + sku.thumb" alt="" /> -->
-          <el-popover trigger="hover" placement="right">
-            <img
-              style="max-width: 500px; max-height: 600px"
-              :src="imgUrl + sku.thumb"
-              alt=""
-            />
-            <p slot="reference">
-              <img
-                :src="imgUrl + sku.thumb"
-                alt=""
-                style="cursor: pointer;"
-                @click="goSkuProfile(sku)"
-              />
-            </p>
-          </el-popover>
+
+          <img :src="imgUrl + sku.thumb" alt="" />
           <div class="ost_right">
             <!-- <div>
               <span>分类：{{ sku.categoryInfo.categoryName }}</span>
@@ -110,7 +97,7 @@
         <!-- <div class="ts_item">
           <span>备注：{{ sku.note }}</span>
         </div> -->
-        <div class="ts_item">
+        <div class="ts_item" v-if="sku.abnormalNote">
           <span>
             异常备注：
             <i style="color:#F56C6C">{{ sku.abnormalNote }}</i>
