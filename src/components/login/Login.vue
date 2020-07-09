@@ -87,7 +87,7 @@
     <div class="login" :class="{ mo_login: isMobile }" v-else>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>客户查询</span>
+          <span>客户订单查询系统</span>
         </div>
         <EffectForm
           ref="effectForm"

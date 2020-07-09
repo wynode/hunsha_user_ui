@@ -72,7 +72,7 @@
           :title="breadMeta.title"
           :items="breadMeta.breadcrumb"
         /> -->
-        <div class="kehu_header">客户订单管理系统</div>
+        <div class="kehu_header">客户订单查询系统</div>
         <router-view />
       </el-main>
     </el-container>
