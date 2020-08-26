@@ -225,6 +225,7 @@ export default {
 
     fetchVerifyCodeFn() {
       getVerify().then((data) => {
+        debugger
         this.verifyCodeUrl = data.result.verifyCode || ''
         this.verifyCodeTime = data.result.verifyCodeTime
         this.verifyCodeHash = data.result.verifyCodeHash
